@@ -40,3 +40,12 @@ Refer to the [link](https://docs.github.com/en/developers/webhooks-and-events/we
 ![Screenshot](Screenshot%202022-09-01%20at%2016.20.33.png)
 
 - Go to Deploy Keys under Security
+
+![DeployKey](Screenshot%202022-09-01%20at%2016.38.06.png)
+
+- Click on Add Deploy key, Give the key a title and copy the public key generated in Step 1, paste it under Key
+  **Tick the checkbox for Allow write access**
+
+![key](Screenshot%202022-09-01%20at%2016.53.01.png)
+
+## Create a job in Jenkins
