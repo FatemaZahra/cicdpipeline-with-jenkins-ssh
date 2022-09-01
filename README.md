@@ -1,6 +1,6 @@
 # CICD with Jenkins
 
-![Screenshot](Screenshot%202022-09-01%20at%2011.01.13.png)
+![Screenshot](images/Screenshot%202022-09-01%20at%2011.01.13.png)
 
 ## CI
 
@@ -37,15 +37,80 @@ Refer to the [link](https://docs.github.com/en/developers/webhooks-and-events/we
 - Go to your repo on Github
 - Go to Settings of your repo
 
-![Screenshot](Screenshot%202022-09-01%20at%2016.20.33.png)
+![Screenshot](images/Screenshot%202022-09-01%20at%2016.20.33.png)
 
 - Go to Deploy Keys under Security
 
-![DeployKey](Screenshot%202022-09-01%20at%2016.38.06.png)
+![DeployKey](images/Screenshot%202022-09-01%20at%2016.38.06.png)
 
 - Click on Add Deploy key, Give the key a title and copy the public key generated in Step 1, paste it under Key
-  **Tick the checkbox for Allow write access**
 
-![key](Screenshot%202022-09-01%20at%2016.53.01.png)
+**Tick the checkbox for Allow write access**
+
+![key](images/Screenshot%202022-09-01%20at%2016.53.01.png)
 
 ## Create a job in Jenkins
+
+- Click on New Item under Jenkins
+
+![new](images/Screenshot%202022-09-01%20at%2017.17.15.png)
+
+- Enter a name and Select Freestyle project then Click on OK
+
+![freestyle](images/Screenshot%202022-09-01%20at%2017.22.51.png)
+
+- Under the General column
+  - Add a description
+  - Check Discard old builds, and keep the max # of builds as 3
+  - Check the box for GitHub Project and add the **https** link of your repo
+
+![img](images/Screenshot%202022-09-01%20at%2017.25.23.png)
+
+- In Office 365 Connector
+
+  - Tick the checkbox to restrict where this project can be run
+
+  ![img](images/Screenshot%202022-09-01%20at%2017.30.09.png)
+
+- Under Source Code Management
+
+  - Select Git
+  - Add the SSH URL of the repository and then add then click on Add to add the private SSH key generated when Setting up SSH connection.
+  - When working on the main branch add Branch specifier as `*/main`
+
+  ![img](images/Screenshot%202022-09-01%20at%2017.31.45.png)
+
+  - When working on another branch add the branch name under Branch Specifier and then add Additional Behaviours
+
+  ![img](images/Screenshot%202022-09-01%20at%2017.36.19.png)
+
+- Under Build Triggers, Check the Tickbox for GitHub hook trigger for GITScm Polling
+
+  ![img](images/Screenshot%202022-09-01%20at%2017.42.52.png)
+
+- Under Build Environment, tick the Checkbox to Provide Node and npm bin/folder to PATH
+  ![img](images/Screenshot%202022-09-01%20at%2017.40.26.png)
+
+- Under build, select Execute shell and add the Commands
+  ![img](images/Screenshot%202022-09-01%20at%2017.43.21.png)
+
+- When not working on the main branch
+
+  - Go to Post-build Actions
+  - Select Git Publisher
+  - Add Check on the tickboxes for Push Only if build succeeds and Merge Results
+  - Save
+
+  ![img](images/Screenshot%202022-09-01%20at%2017.44.25.png)
+
+Once the job is created, click on Build Now
+
+![img](images/Screenshot%202022-09-01%20at%2017.47.49.png)
+
+Once the build is complete, click on the blue circle
+
+![img](images/Screenshot%202022-09-01%20at%2017.49.09.png)
+
+This would take you to the Console Output
+
+![img](images/Screenshot%202022-09-01%20at%2017.51.04.png)
