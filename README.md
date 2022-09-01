@@ -23,3 +23,20 @@ Jenkins offers a simple way to set up a continuous integration or continuous del
 A Webhook is a mechanism to automatically trigger the build of a Jenkins project in response to a commit pushed to a Git repository.
 
 Refer to the [link](https://docs.github.com/en/developers/webhooks-and-events/webhooks/creating-webhooks)
+
+## Connection between Jenkins and GitHub
+
+### 1. Generate a new key in your local host
+
+- Go to your terminal
+- `cd` into the SSH folder
+- Generate a key following the SSH Setup till Step 6 in [link](https://github.com/FatemaZahra/github-ssh-setup)
+
+### 2. Add key to Github Repo
+
+- Go to your repo on Github
+- Go to Settings of your repo
+
+![Screenshot](Screenshot%202022-09-01%20at%2016.20.33.png)
+
+- Go to Deploy Keys under Security
