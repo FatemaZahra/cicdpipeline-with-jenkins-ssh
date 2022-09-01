@@ -24,6 +24,27 @@ A Webhook is a mechanism to automatically trigger the build of a Jenkins project
 
 Refer to the [link](https://docs.github.com/en/developers/webhooks-and-events/webhooks/creating-webhooks)
 
+### Steps to add a WebHook on GitHub
+
+- Go to Settings on your repo
+
+  ![img](images/Screenshot%202022-09-01%20at%2016.20.33.png)
+
+- Under Code and automation, Select WebHooks
+
+  ![img](images/Screenshot%202022-09-01%20at%2018.02.21.png)
+
+- Go to Add WebHooks
+
+  - Enter the Payload URL as `http://jenkins_ip:8080/github-webhook/`
+  - Click on Add Webhook
+
+    ![img](images/Screenshot%202022-09-01%20at%2017.59.49.png)
+
+- Once added, the WebHook appears as:
+
+  ![img](images/Screenshot%202022-09-01%20at%2018.00.19.png)
+
 ## Connection between Jenkins and GitHub
 
 ### 1. Generate a new key in your local host
