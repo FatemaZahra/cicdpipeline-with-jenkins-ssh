@@ -21,4 +21,5 @@ Jenkins offers a simple way to set up a continuous integration or continuous del
 ## Webhook
 
 A Webhook is a mechanism to automatically trigger the build of a Jenkins project in response to a commit pushed to a Git repository.
+
 Refer: https://docs.github.com/en/developers/webhooks-and-events/webhooks/creating-webhooks
