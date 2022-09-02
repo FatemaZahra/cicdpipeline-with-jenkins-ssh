@@ -158,6 +158,9 @@ This would take you to the Console Output
 
 - Create a 3rd Job in Jenkins: Get the code from main branch and copy (SCP) to the EC2
 
+  - Run the script to install node with any other required dependencies
+  - The 3rd job must only be triggered if the second job was successful
+
   ```
   rsync -avz -e "ssh -o StrictHostKeyChecking=no" app ubuntu@52.212.1.3:/home/ubuntu/app
   rsync -avz -e "ssh -o StrictHostKeyChecking=no" environment ubuntu@52.212.1.3:/home/ubuntu/app
@@ -172,9 +175,34 @@ ssh -A -o "StrictHostKeyChecking=no" ubuntu@52.212.1.3 <<EOF
 
     ```
 
-- Run the script to install node with any other required dependencies
-- The 3rd job must only be triggered if the second job was successful
 - First iteration: run npm install and npm start manually (delivery)
+
+  ```
+  ssh -A -o "StrictHostKeyChecking=no" ubuntu@52.212.1.3 <<EOF
+  cd /home/ubuntu/app/app
+  sudo apt install npm
+  npm install
+  ```
+
 - 4th job launch the app
+
+```
+nohup node app.js > /dev/null 2>&1 &
+```
+
 - `pm2 kill all` - Create a 5th job to create DB_HOST=db-ip
 - `npm start`
+
+```
+ssh -A -o "StrictHostKeyChecking=no" ubuntu@52.212.1.3 <<EOF
+	killall node
+	echo "DB_HOST=mongodb://172.31.24.4:27017/posts" | sudo tee -a /etc/environment
+	printenv DB_HOST
+	cd /home/ubuntu/app/app
+	cd seeds
+	node seed.js
+    cd ..
+	nohup node app.js > /dev/null 2>&1 &
+EOF
+
+```
