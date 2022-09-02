@@ -146,14 +146,20 @@ This would take you to the Console Output
 
 ## Steps for CD and CDE
 
-- Create EC2
+- Create an EC2 instance
 
-- Create Security groupp
-- Allow jenkins ip to ssh in as well any other rules required
+- Create Security group
+  - Add port 22 and 8080 with the jenkins IP
+  - Allow port 22 for your IP
+  - Port 80 for all IP
+  - Port 3000 for all IP
+
+![IMG](images/Screenshot%202022-09-02%20at%2017.55.48.png)
+
 - Create a 3rd job in jenkins: Get the code from main branch and copy (SCP) to the EC2
 - Run the script to install node with any other required dependencies
-- the 3rd job must only be triggered if the second job was successful
-- first iteration: run npm install and npm start manually (delivery)
+- The 3rd job must only be triggered if the second job was successful
+- First iteration: run npm install and npm start manually (delivery)
 - 4th job launch the app
 - `pm2 kill all` - Create a 5th job to create DB_HOST=db-ip
-- npm start
+- `npm start`
