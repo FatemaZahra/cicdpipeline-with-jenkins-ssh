@@ -135,3 +135,16 @@ Once the build is complete, click on the blue circle
 This would take you to the Console Output
 
 ![img](images/Screenshot%202022-09-01%20at%2017.51.04.png)
+
+## Steps for CD
+
+- Create EC2
+- Create Security groupp
+- Allow jenkins ip to ssh in as well any other rules required
+- Create a 3rd job in jenkins: Get the code from main branch and copy (SCP) to the EC2
+- Run the script to install node with any other required dependencies
+- the 3rd job must only be triggered if the second job was successful
+- first iteration: run npm install and npm start manually (delivery)
+- 4th job launch the app
+- pm2 kill all - Create a 5th job to create DB_HOST=db-ip
+- npm start
