@@ -136,6 +136,14 @@ This would take you to the Console Output
 
 ![img](images/Screenshot%202022-09-01%20at%2017.51.04.png)
 
+## To trigger the next job
+
+- Go to **Post-build actions**
+- Select **Build other projects**
+- Add the name of the project to be triggered
+
+![img](images/Screenshot%202022-09-02%20at%2014.54.58.png)
+
 ## Steps for CD
 
 - Create EC2
