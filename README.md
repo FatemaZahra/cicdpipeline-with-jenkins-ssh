@@ -144,7 +144,7 @@ This would take you to the Console Output
 
 ![img](images/Screenshot%202022-09-02%20at%2014.54.58.png)
 
-## Steps for CD
+## Steps for CD and CDE
 
 - Create EC2
 - Create Security groupp
