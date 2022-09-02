@@ -147,6 +147,7 @@ This would take you to the Console Output
 ## Steps for CD and CDE
 
 - Create EC2
+
 - Create Security groupp
 - Allow jenkins ip to ssh in as well any other rules required
 - Create a 3rd job in jenkins: Get the code from main branch and copy (SCP) to the EC2
