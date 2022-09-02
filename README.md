@@ -156,7 +156,22 @@ This would take you to the Console Output
 
 ![IMG](images/Screenshot%202022-09-02%20at%2017.55.48.png)
 
-- Create a 3rd job in jenkins: Get the code from main branch and copy (SCP) to the EC2
+- Create a 3rd Job in Jenkins: Get the code from main branch and copy (SCP) to the EC2
+
+  ```
+  rsync -avz -e "ssh -o StrictHostKeyChecking=no" app ubuntu@52.212.1.3:/home/ubuntu/app
+  rsync -avz -e "ssh -o StrictHostKeyChecking=no" environment ubuntu@52.212.1.3:/home/ubuntu/app
+  ```
+
+ssh -A -o "StrictHostKeyChecking=no" ubuntu@52.212.1.3 <<EOF
+
+    # run provisions file for dependencies
+    cd /home/ubuntu/app/environment
+    chmod +x provision.sh
+    ./provision.sh
+
+    ```
+
 - Run the script to install node with any other required dependencies
 - The 3rd job must only be triggered if the second job was successful
 - First iteration: run npm install and npm start manually (delivery)
