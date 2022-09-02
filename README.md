@@ -155,5 +155,5 @@ This would take you to the Console Output
 - the 3rd job must only be triggered if the second job was successful
 - first iteration: run npm install and npm start manually (delivery)
 - 4th job launch the app
-- pm2 kill all - Create a 5th job to create DB_HOST=db-ip
+- `pm2 kill all` - Create a 5th job to create DB_HOST=db-ip
 - npm start
