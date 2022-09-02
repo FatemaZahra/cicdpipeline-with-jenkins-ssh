@@ -156,6 +156,10 @@ This would take you to the Console Output
 
 ![IMG](images/Screenshot%202022-09-02%20at%2017.55.48.png)
 
+- Add .pem key under **Build Environment** --> **SSH Agent** to SSH in terminal
+
+![img](images/Screenshot%202022-09-02%20at%2018.03.53.png)
+
 - Create a 3rd Job in Jenkins: Get the code from main branch and copy (SCP) to the EC2
 
   - Run the script to install node with any other required dependencies
@@ -164,16 +168,15 @@ This would take you to the Console Output
   ```
   rsync -avz -e "ssh -o StrictHostKeyChecking=no" app ubuntu@52.212.1.3:/home/ubuntu/app
   rsync -avz -e "ssh -o StrictHostKeyChecking=no" environment ubuntu@52.212.1.3:/home/ubuntu/app
-  ```
 
-ssh -A -o "StrictHostKeyChecking=no" ubuntu@52.212.1.3 <<EOF
+  ssh -A -o "StrictHostKeyChecking=no" ubuntu@52.212.1.3 <<EOF
 
     # run provisions file for dependencies
     cd /home/ubuntu/app/environment
     chmod +x provision.sh
     ./provision.sh
 
-    ```
+  ```
 
 - First iteration: run npm install and npm start manually (delivery)
 
